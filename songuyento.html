@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Ứng dụng tìm N số nguyên tố đầu tiên</h1>
+<input type="number" id="soN" placeholder="Nhập N">
+<button onclick="Tinh()">Submit</button>
+<button onclick="xoa()">Clear</button>
+<p id="dem"></p>
+<script>
+    function Tinh() {
+        let nguyento = true;
+        let N = soN.value;
+        document.getElementById("dem").innerHTML = "2";
+        for (let i = 3, dem = 0; dem < N - 1; i += 2) {
+            let cani = Math.sqrt(i);
+
+            if (i % 2 == 0) {
+                nguyento = false
+            } else {
+                for (let j = 3; j <= cani; j += 2) {
+                    if (i % j === 0) {
+                        nguyento = false;
+                        break;
+                    }
+                }
+            }
+            if (nguyento) {
+                document.getElementById("dem").innerHTML += ", " + i;
+                dem += 1;
+            } else {
+                nguyento = true
+            }
+        }
+    }
+
+    function xoa() {
+        document.getElementById("dem").innerText = "";
+        soN.value = ""
+    }
+</script>
+</body>
+</html>
